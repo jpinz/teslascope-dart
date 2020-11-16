@@ -12,7 +12,7 @@ class VehicleAPI {
   VehicleAPI({@required this.httpClient}) : assert(httpClient != null);
 
   Future<Vehicle> fetchVehicle(String id) async {
-    final url = '$_baseUrl/$id'; // Example: oprah, corsair
+    final url = '$_baseUrl/$id'; // Example: corsair
     final response = await httpClient.get(url);
 
     if (response.statusCode != 200) {
