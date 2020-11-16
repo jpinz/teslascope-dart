@@ -84,6 +84,8 @@ class Vehicle {
 
   @override
   String toString() {
-    return '${name} ${statistics.drives} ${model}-${trim} (${year})';
+    return '${name} ${model}-${trim} (${year})';
   }
 }
+
+enum VehicleState { unknown, online, asleep, offline }
