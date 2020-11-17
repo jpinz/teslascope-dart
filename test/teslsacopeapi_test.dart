@@ -18,6 +18,14 @@ void main() {
           'Nautilus');
     });
 
+    test('checkPublicId', () async {
+      expect(
+          await vehicleApi
+              .fetchVehicle('corsair')
+              .then((value) => value.publicId),
+          'corsair');
+    });
+
     test('checkYear', () async {
       expect(
           await vehicleApi.fetchVehicle('corsair').then((value) => value.year),
@@ -55,6 +63,23 @@ void main() {
               .fetchSoftware('2020.44.10.1')
               .then((value) => '${value.major}.${value.minor}'),
           '10.1');
+    });
+  });
+
+  group('Teslascope API Tests', () {
+    var teslascopeApi;
+
+    setUp(() {
+      var client = http.Client();
+      teslascopeApi = TeslascopeAPI(httpClient: client, apiKey: '<api_key>');
+    });
+
+    test('checkName', () async {
+      expect(
+          await teslascopeApi.vehicleApi
+              .fetchVehicle('corsair')
+              .then((value) => value.name),
+          'Nautilus');
     });
   });
 }
